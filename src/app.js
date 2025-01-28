@@ -12,19 +12,30 @@ let domainArray2 = [
 ];
 let extensionArray = [".com", ".net", ".us", ".io", ".es", ".co", ".ch"];
 
-let subdomain = Math.floor(Math.random() * subDomainArray.length);
-let domain1 = Math.floor(Math.random() * domainArray1.length);
-let domain2 = Math.floor(Math.random() * domainArray2.length);
-let extension = Math.floor(Math.random() * extensionArray.length);
+let urls = [];
 
-function domainGenerated() {
-  return (
-    "https://" +
-    subDomainArray[subdomain] +
-    domainArray1[domain1] +
-    domainArray2[domain2] +
-    extensionArray[extension]
-  );
+for (let i = 0; i < subDomainArray.length; i++) {
+  subDomainArray[i];
+  for (let a = 0; a < domainArray1.length; a++) {
+    subDomainArray[i] + domainArray1[a];
+    for (let b = 0; b < domainArray2.length; b++) {
+      subDomainArray[i] + domainArray1[a] + domainArray2[b];
+      for (let c = 0; c < extensionArray.length; c++) {
+        urls.push(
+          subDomainArray[i] +
+            domainArray1[a] +
+            domainArray2[b] +
+            extensionArray[c]
+        );
+      }
+    }
+  }
 }
 
-document.querySelector("#domain").innerHTML = domainGenerated();
+function domains() {
+  return urls.join("\n\n");
+}
+
+console.log(urls); // Todas las combinaciones posibles
+
+// document.querySelector("#domain").innerHTML = domains();
